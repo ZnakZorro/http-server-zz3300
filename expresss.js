@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'pages')));
 		res.setHeader("Access-Control-Allow-Origin", "*");
 		//res.setHeader("Access-Control-Allow-Methods", "*");
 		//res.setHeader("Access-Control-Allow-Headers", "*");
-		console.log(json);
+		console.log(ret);
 		res.send(ret);
 	}	
 
