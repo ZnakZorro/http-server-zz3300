@@ -17,18 +17,33 @@ app.use(express.static(path.join(__dirname, 'pages')));
     res.sendFile(path.join(__dirname, 'pages/index.html'));
 });*/
 
-
+	let sendInfo=(res,ret)=>{
+		var j = JSON.stringify([ret]);
+		res.setHeader("Access-Control-Allow-Origin", "*");
+		res.setHeader("Access-Control-Allow-Methods", "*");
+		res.setHeader("Access-Control-Allow-Headers", "*");
+		
+		res.send(j);
+	}	
 
 app.get('/radio/*', (req, res) => {
-    //console.log(req.params);
+    console.log(req.params);
     //let nr = req.params[0];
-    res.send(1);
+    let ret = {"rado":"1"};
+    sendInfo(res,ret);
    
 });
+
+app.get('/radio1/', (req, res) => {
+    console.log(22);    
+    //res.send("11);
+    res.sendFile(path.join(__dirname, 'pages/index.html'));
+});
+
 app.get('/radio2/', (req, res) => {
-    console.log(22);
-    res.send("1");
-    //res.sendFile(path.join(__dirname, 'pages/index.html'));
+    console.log(22);    
+    //res.send("22);
+    res.sendFile(path.join(__dirname, 'pages/index.html'));
 
    /* exec('mpc play 2', (err, stdout, stderr) => {
       if (err) {onsole.log(err); return; }
@@ -38,8 +53,8 @@ app.get('/radio2/', (req, res) => {
 });
 app.get('/radio3', (req, res) => {
     console.log(33);
-    res.send("1");
-    //res.sendFile(path.join(__dirname, 'pages/index.html'));
+    //res.send("33");
+    res.sendFile(path.join(__dirname, 'pages/index.html'));
 
    /* exec('mpc play 3', (err, stdout, stderr) => {
       if (err) {onsole.log(err); return; }
