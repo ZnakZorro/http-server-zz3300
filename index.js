@@ -86,7 +86,7 @@ function getYRNO(miasto) {
           };
 
           if (!error && res.statusCode == 200) {
-              console.log(body)
+              console.log(body.data.children);
           };
       });
 }
