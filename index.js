@@ -77,7 +77,7 @@ function getYRNO(miasto) {
 */
 
 
-let getYRNO=(res,miasto)=> {
+let getYRNO=(resmain,miasto)=> {
       //let url = "https://www.reddit.com/r/popular.json";
       let url ='https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
       let options = {json: true};
@@ -88,11 +88,21 @@ let getYRNO=(res,miasto)=> {
 
           if (!error && res.statusCode == 200) {
               console.log(body);
-              sendInfo(res,body);
+              sendInfo(resmain,body);
               //console.log(body);
           };
       });
 }
+
+
+	let sendInfo=(res,ret)=>{
+		var json = JSON.stringify(ret);
+		res.setHeader("Access-Control-Allow-Origin", "*");
+		//res.setHeader("Access-Control-Allow-Methods", "*");
+		//res.setHeader("Access-Control-Allow-Headers", "*");
+		console.log(ret);
+		res.send(ret);
+	}	
 
 
 app.get('/yrno/*', (req, res) => {
@@ -104,15 +114,6 @@ app.get('/yrno/*', (req, res) => {
 
 
 
-
-	let sendInfo=(res,ret)=>{
-		var json = JSON.stringify(ret);
-		res.setHeader("Access-Control-Allow-Origin", "*");
-		//res.setHeader("Access-Control-Allow-Methods", "*");
-		//res.setHeader("Access-Control-Allow-Headers", "*");
-		console.log(ret);
-		res.send(ret);
-	}	
 
 app.get('/radio/*', (req, res) => {
     //console.log(req.params);
