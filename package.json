@@ -6,8 +6,8 @@
 		"body-parser": "1.18.2",
 		"core-js": "2.5.3",
 		"express": "4.16.2",
-		"nodemon": "^2.0.7",
-    "https":"latest"
+		"https": "latest",
+		"nodemon": "^2.0.7"
 	},
 	"scripts": {
 		"dev": "nodemon index.js",
