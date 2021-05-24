@@ -89,9 +89,9 @@ let getYRNO=(resmain,miasto)=> {
               //shortIntervals
               //longIntervals
               sendInfo(resmain,body.longIntervals);
-              parsowanie(resmain,body.longIntervals)
+              parsowanie(resmain,body.longIntervals);
               //console.log(body);
-          };
+          }
       });
 }
 
