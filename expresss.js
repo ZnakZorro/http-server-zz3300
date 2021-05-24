@@ -22,14 +22,14 @@ app.use(express.static(path.join(__dirname, 'pages')));
 		res.setHeader("Access-Control-Allow-Origin", "*");
 		res.setHeader("Access-Control-Allow-Methods", "*");
 		res.setHeader("Access-Control-Allow-Headers", "*");
-		
+		console.log(j);
 		res.send(j);
 	}	
 
 app.get('/radio/*', (req, res) => {
     console.log(req.params);
-    //let nr = req.params[0];
-    let ret = {"rado":"1"};
+    let nr = req.params[0];
+    let ret = {"rado":nr};
     sendInfo(res,ret);
    
 });
