@@ -19,16 +19,10 @@ app.use(express.static(path.join(__dirname, 'pages')));
 
 
 
-app.get('/radio1/', (req, res) => {
-    console.log(11);
+app.get('/radio/:nr', (req, res) => {
+    console.log(req.params.nr);
     res.send("1");
-    //res.sendFile(path.join(__dirname, 'pages/index.html'));
-
-    /*exec('mpc play 1', (err, stdout, stderr) => {
-      if (err) {onsole.log(err); return; }
-      console.log(`stdout: ${stdout}`);
-      console.log(`stderr: ${stderr}`);
-    }); */   
+   
 });
 app.get('/radio2/', (req, res) => {
     console.log(22);
