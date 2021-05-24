@@ -5,73 +5,34 @@ const http = require('http');
 const app = express();
 const exec = require('child_process');
 const https = require('https');
-//const fetch = require('node-fetch');
 const request = require('request');
 
 // Parsers
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
-// Angular DIST output folder
+
 app.use(express.static(path.join(__dirname, 'pages')));
 
-// Send all other requests to the Angular app
-/*app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'pages/index.html'));
-});*/
-
-
-
-/*
-async function getYRNO(miasto) {
-  console.log(miasto);
-  let url ='https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
-    https.get(url,(res) => {
-        let body = "";
-        res.on("data", (chunk) => {
-            body += chunk;
-        });
-        res.on("end", () => {
-            try {
-                let json = JSON.parse(body);
-                console.log(json);
-                //parsowanie(json);
-            } catch (error) {
-                console.error(error.message);
-            };
-        });
-    }).on("error", (error) => {
-        console.error(error.message);
-    });
-
-  //const res = await fetch.fetchUrl(url)
-  //const posts = await res.json()
-  //console.log(posts);
-  return miasto;
-}
-*/
-/*
-function getYRNO(miasto) {
-      let settings = { method: "Get" };
-      fetch(url, settings)
-          .then(res => res.json())
-          .then((json) => {
-            console.log(json);
-          });
-}
-*/
+const sendInfo=(res,ret)=>{
+		var json = JSON.stringify(ret);
+		res.setHeader("Access-Control-Allow-Origin", "*");
+		//res.setHeader("Access-Control-Allow-Methods", "*");
+		//res.setHeader("Access-Control-Allow-Headers", "*");
+		//console.log(ret);
+		res.send(ret);
+}	
 
 const parsowanie=(resmain,data)=>{
     console.log("------------------------------");
     let html = `<table class="table">`;
+    html = "<tr><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th></tr>";
 		for (var o in data){
       let day = data[o];
 			//console.log(o,day);      
       let czas = (new Date(day.start)).toLocaleString('pl-PL');
       let deszcz = Math.max(day.precipitation.value,day.precipitation.min,day.precipitation.max);
       let opis = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
-      console.log(czas,"T=",day.temperature.value,"FL=",day.feelsLike.value,"  D="+deszcz+" mm");      
-      //html+="<p>"+czas+"T="+day.temperature.value+"FL="+day.feelsLike.value+"  D="+deszcz+" mm</p>";      
       html+=`<tr>
           <td>${czas}</td>
           <td>${day.temperature.value}</td>
@@ -81,7 +42,6 @@ const parsowanie=(resmain,data)=>{
           <td>${day.humidity.value}</td>
           <td>${day.wind.speed}</td>
           <td>${opis}</td>
-          
           <td>${deszcz} mm</td>
       </tr>`;
 		}
@@ -90,35 +50,20 @@ const parsowanie=(resmain,data)=>{
 }
 
 let getYRNO=(resmain,miasto)=> {
-      //let url = "https://www.reddit.com/r/popular.json";
       let url ='https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
       let options = {json: true};
       request(url, options, (error, res, body) => {
           if (error) {
               return  console.log(error)
           };
-
           if (!error && res.statusCode == 200) {
-              console.log(body);
-              //dayIntervals
-              //shortIntervals
-              //longIntervals
-              
               parsowanie(resmain,body.longIntervals);
-              //console.log(body);
           }
       });
 }
 
 
-	let sendInfo=(res,ret)=>{
-		var json = JSON.stringify(ret);
-		res.setHeader("Access-Control-Allow-Origin", "*");
-		//res.setHeader("Access-Control-Allow-Methods", "*");
-		//res.setHeader("Access-Control-Allow-Headers", "*");
-		console.log(ret);
-		res.send(ret);
-	}	
+
 
 
 app.get('/yrno/*', (req, res) => {
