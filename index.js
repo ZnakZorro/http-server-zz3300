@@ -35,6 +35,25 @@ app.get('/radio/*', (req, res) => {
    
 });
 
+
+app.get('/volume/*', (req, res) => {
+    let nr = req.params[0];
+    let ret = {"radio":nr};
+    sendInfo(res,ret);
+});
+
+
+app.get('/yrno/*', (req, res) => {
+    let miasto = req.params[0];
+    let ret = {"miasto":miasto};
+    sendInfo(res,ret);
+});
+
+
+
+
+
+
 app.get('/radio1/', (req, res) => {
     console.log(22);    
     //res.send("11);
