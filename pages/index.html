@@ -51,9 +51,16 @@ document.addEventListener("DOMContentLoaded",function(){
       <button onClick="radio(3)">Radio 3</button>
       <button onClick="volume(25)">Volume 25</button>
       <h3>Yrno</h3>
-      <button class="btn btn-default" onClick='yrno("Szczecin")'>Szczecin</button>
-      <button class="btn btn-default" onClick='yrno("Szczecin-Dąbie")'>Szczecin-Dąbie</button>
-      <button class="btn btn-default" onClick='yrno("Warszawa")'>Warszawa</button>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary">Left</button>
+        <button type="button" class="btn btn-primary">Middle</button>
+        <button type="button" class="btn btn-primary">Right</button>
+      </div>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary" onClick='yrno("Szczecin")'>Szczecin</button>
+        <button class="btn btn-default" onClick='yrno("Szczecin-Dąbie")'>Szczecin-Dąbie</button>
+        <button class="btn btn-default" onClick='yrno("Warszawa")'>Warszawa</button>
+      </div>
     </div>
   </div>
 
