@@ -24,7 +24,7 @@ const sendInfo = (res, ret) => {
 
 const parsowanie = (resmain, data) => {
   console.log('------------------------------');
-  let html = `<table class="table table-striped">`;
+  let html = `<table class="table table-bordered table-striped">`;
   html +=`<tr>
     <th>Czas</th><th>Temp</th><th>Feel</th><th>Dev</th><th>Press</th><th>Humi</th><th>Wind</th><th>Stan</th><th>Deszcz</th>
   </tr>`;
