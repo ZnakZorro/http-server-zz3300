@@ -30,7 +30,7 @@ app.get('/radio/*', (req, res) => {
     //console.log(req.params);
     let nr = req.params[0];
     //console.log(nr);
-    let ret = {"rado":nr};
+    let ret = {"radio":nr};
     sendInfo(res,ret);
    
 });
