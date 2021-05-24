@@ -20,22 +20,7 @@ app.use(express.static(path.join(__dirname, 'pages')));
     res.sendFile(path.join(__dirname, 'pages/index.html'));
 });*/
 
-const parsowanie=(body)=>{
-  //console.log(body);
-		for (var o in body){
-			//console.log(o);
-		}
-    console.log("------------------------------");
-    let html = "";
-		for (var o in body.longIntervals){
-      let day = body.longIntervals[o];
-			//console.log(o,day);      
-      let czas = (new Date(day.start)).toLocaleString('pl-PL');
-      let deszcz = Math.max(day.precipitation.value,day.precipitation.min,day.precipitation.max);
-      console.log(czas,"T=",day.temperature.value,"FL=",day.feelsLike.value,"  D="+deszcz+" mm");      
-		}
-  //return html;
-}
+
 
 /*
 async function getYRNO(miasto) {
@@ -75,7 +60,19 @@ function getYRNO(miasto) {
           });
 }
 */
-
+const parsowanie=(resmain,data)=>{
+    console.log("------------------------------");
+    let html = "";
+		for (var o in data){
+      let day = data[o];
+			//console.log(o,day);      
+      let czas = (new Date(day.start)).toLocaleString('pl-PL');
+      let deszcz = Math.max(day.precipitation.value,day.precipitation.min,day.precipitation.max);
+      console.log(czas,"T=",day.temperature.value,"FL=",day.feelsLike.value,"  D="+deszcz+" mm");      
+      html+=("<p>"+czas+"T="+day.temperature.value+"FL="+day.feelsLike.value+"  D="+deszcz+" mm</p>";      
+		}
+  //return html;
+}
 
 let getYRNO=(resmain,miasto)=> {
       //let url = "https://www.reddit.com/r/popular.json";
@@ -88,7 +85,11 @@ let getYRNO=(resmain,miasto)=> {
 
           if (!error && res.statusCode == 200) {
               console.log(body);
-              sendInfo(resmain,body);
+              //dayIntervals
+              //shortIntervals
+              //longIntervals
+              sendInfo(resmain,body.longIntervals);
+              parsowanie(resmain,body.longIntervals)
               //console.log(body);
           };
       });
