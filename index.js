@@ -26,7 +26,7 @@ const parsowanie = (resmain, data, miasto) => {
    let czas = (new Date()).toLocaleString();
   console.log('-------------'+miasto+'-'+czas+'----------------');
   let html = `<h3>${miasto} ${czas}</h3>`;
-  html += `<table class="table table-bordered table-striped">`;
+  html += `<table class="table table-sm table-bordered table-striped">`;
   html +=`<tr>
     <th>Czas</th><th>Temp</th><th>Feel</th><th>Dev</th><th>Press</th><th>Humi</th><th>Wind</th><th>Stan</th><th>Deszcz</th>
   </tr>`;
