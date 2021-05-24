@@ -22,9 +22,10 @@ const sendInfo = (res, ret) => {
   res.send(ret);
 };
 
-const parsowanie = (resmain, data) => {
+const parsowanie = (resmain, data, miasto) => {
   console.log('------------------------------');
-  let html = `<table class="table table-bordered table-striped">`;
+  let html = `<h3>${miasto}</h3>`;
+  html += `<table class="table table-bordered table-striped">`;
   html +=`<tr>
     <th>Czas</th><th>Temp</th><th>Feel</th><th>Dev</th><th>Press</th><th>Humi</th><th>Wind</th><th>Stan</th><th>Deszcz</th>
   </tr>`;
@@ -62,7 +63,7 @@ let getYRNO = (resmain, miasto) => {
       return console.log(error);
     }
     if (!error && res.statusCode == 200) {
-      parsowanie(resmain, body.longIntervals);
+      parsowanie(resmain, body.longIntervals,miasto);
     }
   });
 };
