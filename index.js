@@ -63,22 +63,20 @@ function getYRNO(miasto) {
 
 const parsowanie=(resmain,data)=>{
     console.log("------------------------------");
-    let html = "<table class="table">";
+    let html = `<table class="table">`;
 		for (var o in data){
       let day = data[o];
 			//console.log(o,day);      
       let czas = (new Date(day.start)).toLocaleString('pl-PL');
       let deszcz = Math.max(day.precipitation.value,day.precipitation.min,day.precipitation.max);
       console.log(czas,"T=",day.temperature.value,"FL=",day.feelsLike.value,"  D="+deszcz+" mm");      
-      html+="<p>"+czas+"T="+day.temperature.value+"FL="+day.feelsLike.value+"  D="+deszcz+" mm</p>";      
-      html+=`
-      <tr>
+      //html+="<p>"+czas+"T="+day.temperature.value+"FL="+day.feelsLike.value+"  D="+deszcz+" mm</p>";      
+      html+=`<tr>
           <td>${czas}</td>
           <td>${day.temperature.value}</td>
           <td>${day.feelsLike.value}</td>
           <td>${deszcz} mm</td>
-      </tr>
-      `;      
+      </tr>`;
 		}
     html+="</table>";
   sendInfo(resmain,{"html":html});
