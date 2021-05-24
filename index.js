@@ -9,31 +9,35 @@ const request = require('request');
 
 // Parsers
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
-
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'pages')));
 
-const sendInfo=(res,ret)=>{
-		var json = JSON.stringify(ret);
-		res.setHeader("Access-Control-Allow-Origin", "*");
-		//res.setHeader("Access-Control-Allow-Methods", "*");
-		//res.setHeader("Access-Control-Allow-Headers", "*");
-		//console.log(ret);
-		res.send(ret);
-}	
+const sendInfo = (res, ret) => {
+  var json = JSON.stringify(ret);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader("Access-Control-Allow-Methods", "*");
+  //res.setHeader("Access-Control-Allow-Headers", "*");
+  //console.log(ret);
+  res.send(ret);
+};
 
-const parsowanie=(resmain,data)=>{
-    console.log("------------------------------");
-    let html = `<table class="table">`;
-    html = "<tr><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th></tr>";
-		for (var o in data){
-      let day = data[o];
-			//console.log(o,day);      
-      let czas = (new Date(day.start)).toLocaleString('pl-PL');
-      let deszcz = Math.max(day.precipitation.value,day.precipitation.min,day.precipitation.max);
-      let opis = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
-      html+=`<tr>
+const parsowanie = (resmain, data) => {
+  console.log('------------------------------');
+  let html = `<table class="table">`;
+  html =
+    '<tr><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th></tr>';
+  for (var o in data) {
+    let day = data[o];
+    //console.log(o,day);
+    let czas = new Date(day.start).toLocaleString('pl-PL');
+    let deszcz = Math.max(
+      day.precipitation.value,
+      day.precipitation.min,
+      day.precipitation.max
+    );
+    let opis = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
+    html += `<tr>
           <td>${czas}</td>
           <td>${day.temperature.value}</td>
           <td>${day.feelsLike.value}</td>
@@ -44,103 +48,53 @@ const parsowanie=(resmain,data)=>{
           <td>${opis}</td>
           <td>${deszcz} mm</td>
       </tr>`;
-		}
-    html+="</table>";
-  sendInfo(resmain,{"html":html});
-}
+  }
+  html += '</table>';
+  sendInfo(resmain, { html: html });
+};
 
-let getYRNO=(resmain,miasto)=> {
-      let url ='https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
-      let options = {json: true};
-      request(url, options, (error, res, body) => {
-          if (error) {
-              return  console.log(error)
-          };
-          if (!error && res.statusCode == 200) {
-              parsowanie(resmain,body.longIntervals);
-          }
-      });
-}
-
-
+let getYRNO = (resmain, miasto) => {
+  let url = 'https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
+  let options = { json: true };
+  request(url, options, (error, res, body) => {
+    if (error) {
+      return console.log(error);
+    }
+    if (!error && res.statusCode == 200) {
+      parsowanie(resmain, body.longIntervals);
+    }
+  });
+};
 
 
+/* ROUTING * ROUTING * ROUTING * ROUTING * ROUTING */
+/* ROUTING * ROUTING * ROUTING * ROUTING * ROUTING */
+/* ROUTING * ROUTING * ROUTING * ROUTING * ROUTING */
 
 app.get('/yrno/*', (req, res) => {
-    let miasto = req.params[0];    
-    getYRNO(res,miasto);
-    //let ret = {"miasto":miasto,"html":"???"};
-    
+  let miasto = req.params[0];
+  getYRNO(res, miasto);
+  //let ret = {"miasto":miasto,"html":"???"};
 });
-
-
-
 
 app.get('/radio/*', (req, res) => {
-    //console.log(req.params);
-    let nr = req.params[0];
-    //console.log(nr);
-    let ret = {"radio":nr};
-    sendInfo(res,ret);
-   
+  //console.log(req.params);
+  let nr = req.params[0];
+  //console.log(nr);
+  let ret = { radio: nr };
+  sendInfo(res, ret);
 });
-
 
 app.get('/volume/*', (req, res) => {
-    let vol = req.params[0];
-    let ret = {"volume":vol};
-    sendInfo(res,ret);
+  let vol = req.params[0];
+  let ret = { volume: vol };
+  sendInfo(res, ret);
 });
-
-
-
-
-
-
-
-app.get('/radio1/', (req, res) => {
-    console.log(22);    
-    //res.send("11);
-    res.sendFile(path.join(__dirname, 'pages/index.html'));
-});
-
-app.get('/radio2/', (req, res) => {
-    console.log(22);    
-    //res.send("22);
-    res.sendFile(path.join(__dirname, 'pages/index.html'));
-
-   /* exec('mpc play 2', (err, stdout, stderr) => {
-      if (err) {onsole.log(err); return; }
-      console.log(`stdout: ${stdout}`);
-      console.log(`stderr: ${stderr}`);
-    }); */   
-});
-app.get('/radio3', (req, res) => {
-    console.log(33);
-    //res.send("33");
-    res.sendFile(path.join(__dirname, 'pages/index.html'));
-
-   /* exec('mpc play 3', (err, stdout, stderr) => {
-      if (err) {onsole.log(err); return; }
-      console.log(`stdout: ${stdout}`);
-      console.log(`stderr: ${stderr}`);
-    });*/
-
-});
-
-
-
-
-
-
-
-
-
 
 
 
 //Set Port
-const port = process.env.PORT || '3330';
+const port = process.env.PORT || '3300';
 app.set('port', port);
 
 const server = http.createServer(app);
