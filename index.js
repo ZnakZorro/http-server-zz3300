@@ -23,7 +23,7 @@ const sendInfo = (res, ret) => {
 };
 
 const parsowanie = (resmain, data, miasto) => {
-  console.log('------------------------------');
+  console.log('-------------'+miasto+'-----------------');
   let html = `<h3>${miasto}</h3>`;
   html += `<table class="table table-bordered table-striped">`;
   html +=`<tr>
