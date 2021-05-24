@@ -29,7 +29,8 @@ app.use(express.static(path.join(__dirname, 'pages')));
 app.get('/radio/*', (req, res) => {
     console.log(req.params);
     let nr = req.params[0];
-    let ret = {"rado":nr};
+    console.log(nr);
+    let ret = {"rado":"1"};
     sendInfo(res,ret);
    
 });
