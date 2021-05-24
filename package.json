@@ -7,8 +7,8 @@
 		"core-js": "2.5.3",
 		"express": "4.16.2",
 		"https": "latest",
-		"node-fetch": "latest",
-		"nodemon": "^2.0.7"
+		"nodemon": "^2.0.7",
+		"request": "latest"
 	},
 	"scripts": {
 		"dev": "nodemon index.js",

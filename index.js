@@ -5,7 +5,8 @@ const http = require('http');
 const app = express();
 const exec = require('child_process');
 const https = require('https');
-const fetch = require('node-fetch');
+//const fetch = require('node-fetch');
+const request = require('request');
 
 // Parsers
 app.use(bodyParser.json());
@@ -64,7 +65,7 @@ async function getYRNO(miasto) {
   return miasto;
 }
 */
-
+/*
 function getYRNO(miasto) {
       let settings = { method: "Get" };
       fetch(url, settings)
@@ -72,6 +73,22 @@ function getYRNO(miasto) {
           .then((json) => {
             console.log(json);
           });
+}
+*/
+
+
+function getYRNO(miasto) {
+      let url = "https://www.reddit.com/r/popular.json";
+      let options = {json: true};
+      request(url, options, (error, res, body) => {
+          if (error) {
+              return  console.log(error)
+          };
+
+          if (!error && res.statusCode == 200) {
+              console.log(body)
+          };
+      });
 }
 
 
