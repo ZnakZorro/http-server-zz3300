@@ -3,10 +3,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
 const app = express();
-
 const exec = require('child_process');
-
 const https = require('https');
+const fetch = require('node-fetch');
 
 // Parsers
 app.use(bodyParser.json());
@@ -78,7 +77,7 @@ function getYRNO(miasto) {
 
 app.get('/yrno/*', (req, res) => {
     let miasto = req.params[0];    
-    let yr = getYRNO(miasto);
+    getYRNO(miasto);
     let ret = {"miasto":miasto,"html":"???"};
     sendInfo(res,ret);
 });
