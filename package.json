@@ -11,6 +11,6 @@
 	"scripts": {
 		"dev": "nodemon index.js",
 		"start": "node index.js",
-		"server": "npx nodemon expresss.js"
+		"server": "npx nodemon index.js"
 	}
 }
