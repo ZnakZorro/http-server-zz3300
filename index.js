@@ -69,7 +69,7 @@ async function getYRNO(miasto) {
 
 app.get('/yrno/*', (req, res) => {
     let miasto = req.params[0];    
-    let yr = await getYRNO(miasto);
+    let yr = getYRNO(miasto);
     let ret = {"miasto":miasto,"html":yr};
     sendInfo(res,ret);
 });
