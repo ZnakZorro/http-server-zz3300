@@ -37,8 +37,8 @@ app.get('/radio/*', (req, res) => {
 
 
 app.get('/volume/*', (req, res) => {
-    let nr = req.params[0];
-    let ret = {"radio":nr};
+    let vol = req.params[0];
+    let ret = {"volume":vol};
     sendInfo(res,ret);
 });
 
