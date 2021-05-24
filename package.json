@@ -9,9 +9,8 @@
 		"nodemon": "^2.0.7"
 	},
 	"scripts": {
-		"dev": "nodemon server.js",
-		"start": "node server.js",
-		"first": "npx nodemon server.js",
+		"dev": "nodemon index.js",
+		"start": "node index.js",
 		"server": "npx nodemon expresss.js"
 	}
 }
