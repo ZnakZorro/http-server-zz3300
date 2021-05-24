@@ -26,7 +26,7 @@ async function getYRNO(miasto) {
   console.log(miasto);
   let url ='https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
   fetchUrl(url, function(error, meta, body){
-    console.log(body.toString());
+    console.log(body);
 });
   //const res = await fetch.fetchUrl(url)
   //const posts = await res.json()
