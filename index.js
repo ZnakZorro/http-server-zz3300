@@ -60,6 +60,7 @@ function getYRNO(miasto) {
           });
 }
 */
+
 const parsowanie=(resmain,data)=>{
     console.log("------------------------------");
     let html = "";
@@ -69,9 +70,9 @@ const parsowanie=(resmain,data)=>{
       let czas = (new Date(day.start)).toLocaleString('pl-PL');
       let deszcz = Math.max(day.precipitation.value,day.precipitation.min,day.precipitation.max);
       console.log(czas,"T=",day.temperature.value,"FL=",day.feelsLike.value,"  D="+deszcz+" mm");      
-      html+=("<p>"+czas+"T="+day.temperature.value+"FL="+day.feelsLike.value+"  D="+deszcz+" mm</p>";      
+      html+="<p>"+czas+"T="+day.temperature.value+"FL="+day.feelsLike.value+"  D="+deszcz+" mm</p>";      
 		}
-  //return html;
+  sendInfo(resmain,{"html":html});
 }
 
 let getYRNO=(resmain,miasto)=> {
@@ -88,7 +89,7 @@ let getYRNO=(resmain,miasto)=> {
               //dayIntervals
               //shortIntervals
               //longIntervals
-              sendInfo(resmain,body.longIntervals);
+              
               parsowanie(resmain,body.longIntervals);
               //console.log(body);
           }
