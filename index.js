@@ -77,7 +77,7 @@ function getYRNO(miasto) {
 */
 
 
-function getYRNO(res,miasto) {
+let getYRNO=(res,miasto)=> {
       //let url = "https://www.reddit.com/r/popular.json";
       let url ='https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
       let options = {json: true};
