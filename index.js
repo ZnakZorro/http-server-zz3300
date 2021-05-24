@@ -25,7 +25,9 @@ const sendInfo = (res, ret) => {
 const parsowanie = (resmain, data) => {
   console.log('------------------------------');
   let html = `<table class="table table-striped">`;
-  html +='<tr><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th><th>Czas</th></tr>';
+  html +=`<tr>
+    <th>Czas</th><th>Temp</th><th>Feel</th><th>Dev</th><th>Press</th><th>Humi</th><th>Wind</th><th>Stan</th><th>Deszcz</th>
+  </tr>`;
   for (var o in data) {
     let day = data[o];
     //console.log(o,day);

@@ -45,21 +45,18 @@ document.addEventListener("DOMContentLoaded",function(){
     <div class="row">
       <div id="debug"></div>
       <a href="/"><h1>new DOM on stackBlitz</h1></a>
-      
-      <button onClick="radio(1)">Radio 1</button>
-      <button onClick="radio(2)">Radio 2</button>
-      <button onClick="radio(3)">Radio 3</button>
-      <button onClick="volume(25)">Volume 25</button>
-      <h3>Yrno</h3>
       <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary">Left</button>
-        <button type="button" class="btn btn-primary">Middle</button>
-        <button type="button" class="btn btn-primary">Right</button>
+          <button type="button" class="btn btn-sm btn-info" onClick="radio(1)">Radio 1</button>
+          <button type="button" class="btn btn-sm btn-info" onClick="radio(2)">Radio 2</button>
+          <button type="button" class="btn btn-sm btn-info" onClick="radio(3)">Radio 3</button>
+          <button type="button" class="btn btn-sm btn-info" onClick="volume(25)">Volume 25</button>
       </div>
+      <h3>Yrno</h3>
+      
       <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary" onClick='yrno("Szczecin")'>Szczecin</button>
-        <button class="btn btn-default" onClick='yrno("Szczecin-Dąbie")'>Szczecin-Dąbie</button>
-        <button class="btn btn-default" onClick='yrno("Warszawa")'>Warszawa</button>
+          <button type="button" class="btn btn-success" onClick='yrno("Szczecin")'>Szczecin</button>
+          <button type="button" class="btn btn-success" onClick='yrno("Szczecin-Dąbie")'>Szczecin-Dąbie</button>
+          <button type="button" class="btn btn-success" onClick='yrno("Warszawa")'>Warszawa</button>
       </div>
     </div>
   </div>
