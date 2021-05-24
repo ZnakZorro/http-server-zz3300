@@ -18,18 +18,18 @@ app.use(express.static(path.join(__dirname, 'pages')));
 });*/
 
 	let sendInfo=(res,ret)=>{
-		var j = JSON.stringify([ret]);
+		var json = JSON.stringify(ret);
 		res.setHeader("Access-Control-Allow-Origin", "*");
-		res.setHeader("Access-Control-Allow-Methods", "*");
-		res.setHeader("Access-Control-Allow-Headers", "*");
-		console.log(j);
-		res.send(j);
+		//res.setHeader("Access-Control-Allow-Methods", "*");
+		//res.setHeader("Access-Control-Allow-Headers", "*");
+		console.log(json);
+		res.send(json);
 	}	
 
 app.get('/radio/*', (req, res) => {
-    console.log(req.params);
+    //console.log(req.params);
     let nr = req.params[0];
-    console.log(nr);
+    //console.log(nr);
     let ret = {"rado":nr};
     sendInfo(res,ret);
    
