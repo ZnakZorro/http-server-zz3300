@@ -50,7 +50,7 @@ async function getYRNO(miasto) {
             try {
                 let json = JSON.parse(body);
                 console.log(json);
-                parsowanie(json);
+                //parsowanie(json);
             } catch (error) {
                 console.error(error.message);
             };
@@ -69,7 +69,7 @@ async function getYRNO(miasto) {
 
 app.get('/yrno/*', (req, res) => {
     let miasto = req.params[0];    
-    let yr = getYRNO(miasto);
+    let yr = await getYRNO(miasto);
     let ret = {"miasto":miasto,"html":yr};
     sendInfo(res,ret);
 });
