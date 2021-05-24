@@ -20,6 +20,22 @@ app.use(express.static(path.join(__dirname, 'pages')));
     res.sendFile(path.join(__dirname, 'pages/index.html'));
 });*/
 
+const parsowanie=(body)=>{
+  //console.log(body);
+		for (var o in body){
+			//console.log(o);
+		}
+    console.log("------------------------------");
+    let html = "";
+		for (var o in body.longIntervals){
+      let day = body.longIntervals[o];
+			//console.log(o,day);      
+      let czas = (new Date(day.start)).toLocaleString('pl-PL');
+      let deszcz = Math.max(day.precipitation.value,day.precipitation.min,day.precipitation.max);
+      console.log(czas,"T=",day.temperature.value,"FL=",day.feelsLike.value,"  D="+deszcz+" mm");      
+		}
+  return html;
+}
 
 
 async function getYRNO(miasto) {
@@ -34,7 +50,7 @@ async function getYRNO(miasto) {
             try {
                 let json = JSON.parse(body);
                 console.log(json);
-                //parsowanie(json);
+                return parsowanie(json);
             } catch (error) {
                 console.error(error.message);
             };
@@ -49,6 +65,14 @@ async function getYRNO(miasto) {
   return miasto;
 }
 
+
+
+app.get('/yrno/*', (req, res) => {
+    let miasto = req.params[0];    
+    let yr = getYRNO(miasto);
+    let ret = {"miasto":miasto,"html":yr};
+    sendInfo(res,ret);
+});
 
 
 
@@ -78,13 +102,6 @@ app.get('/volume/*', (req, res) => {
     sendInfo(res,ret);
 });
 
-
-app.get('/yrno/*', (req, res) => {
-    let miasto = req.params[0];
-    let ret = {"miasto":miasto};
-    let yr = getYRNO(miasto);
-    sendInfo(res,ret);
-});
 
 
 
