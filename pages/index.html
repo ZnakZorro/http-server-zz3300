@@ -28,6 +28,7 @@ let yrno=(miasto)=>{
   getF("/yrno/"+miasto).then((ret) => {
     console.log(ret)
     document.getElementById("info").textContent = JSON.stringify(ret);
+    if (ret.html) document.getElementById("html").innerHTML =ret.html;
   })
 }
 document.addEventListener("DOMContentLoaded",function(){
@@ -54,6 +55,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
   <h1>new DOM stackblitz</h1>
+  <div id="html"></div>
   <div id="info"></div>
  <div id="debug"></div>
   <app-root></app-root>
