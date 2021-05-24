@@ -34,7 +34,7 @@ const parsowanie=(body)=>{
       let deszcz = Math.max(day.precipitation.value,day.precipitation.min,day.precipitation.max);
       console.log(czas,"T=",day.temperature.value,"FL=",day.feelsLike.value,"  D="+deszcz+" mm");      
 		}
-  return html;
+  //return html;
 }
 
 
@@ -50,7 +50,7 @@ async function getYRNO(miasto) {
             try {
                 let json = JSON.parse(body);
                 console.log(json);
-                return parsowanie(json);
+                parsowanie(json);
             } catch (error) {
                 console.error(error.message);
             };
