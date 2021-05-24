@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'pages')));
 		//res.setHeader("Access-Control-Allow-Methods", "*");
 		//res.setHeader("Access-Control-Allow-Headers", "*");
 		console.log(json);
-		res.send(json);
+		res.send(ret);
 	}	
 
 app.get('/radio/*', (req, res) => {
