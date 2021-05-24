@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mean</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+<script>
+  const getF = async (nr) => {
+  const r = await fetch("/radio/"+nr);
+  const o = await r.text();
+  return o;
+}
+let radio=(nr)=>{
+  getF(nr).then((re) => {
+    console.log(re)
+  })
+}
+
+</script>
+
+</head>
+<body>
+  <p><a href="/">WORK </a></p>
+   <h1>new DOM stackblitz</h1>
+  <p><a href="/radio1">radio/1</a></p>
+  <p><a href="/radio2">radio/2</a></p>
+  <p><a href="/radio3">radio/3</a></p>
+  <button onClick="radio(1)">Radio 1</button>
+  <button onClick="radio(2)">Radio 2</button>
+  <button onClick="radio(3)">Radio 3</button>
+
+
+  <h1>new DOM stackblitz</h1>
+  <div id="info"></div>
+ <div id="debug"></div>
+  <app-root></app-root>
+</body>
+</html>
