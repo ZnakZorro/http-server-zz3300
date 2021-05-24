@@ -11,7 +11,7 @@
 <script>
   const getF = async (nr) => {
   const r = await fetch("/radio/"+nr);
-  const o = await r.text();
+  const o = await r.json();
   return o;
 }
 let radio=(nr)=>{
