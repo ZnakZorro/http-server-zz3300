@@ -77,7 +77,7 @@ function getYRNO(miasto) {
 */
 
 
-function getYRNO(miasto) {
+function getYRNO(res,miasto) {
       //let url = "https://www.reddit.com/r/popular.json";
       let url ='https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
       let options = {json: true};
@@ -87,7 +87,8 @@ function getYRNO(miasto) {
           };
 
           if (!error && res.statusCode == 200) {
-              console.log(body.data.children);
+              console.log(body);
+              sendInfo(res,body);
               //console.log(body);
           };
       });
@@ -96,9 +97,9 @@ function getYRNO(miasto) {
 
 app.get('/yrno/*', (req, res) => {
     let miasto = req.params[0];    
-    getYRNO(miasto);
-    let ret = {"miasto":miasto,"html":"???"};
-    sendInfo(res,ret);
+    getYRNO(res,miasto);
+    //let ret = {"miasto":miasto,"html":"???"};
+    
 });
 
 
