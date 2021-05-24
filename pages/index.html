@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="utf-8">
-  <title>Mean</title>
+  <title>NODE.local</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,11 +26,12 @@ let volume=(nr)=>{
 }
 let yrno=(miasto)=>{
   getF("/yrno/"+miasto).then((ret) => {
-    console.log(ret)
-    document.getElementById("info").textContent = JSON.stringify(ret);
+    console.log(ret);    
     if (ret.html) document.getElementById("html").innerHTML =ret.html;
+    else document.getElementById("info").textContent = JSON.stringify(ret);
   })
 }
+
 document.addEventListener("DOMContentLoaded",function(){
     let czas = (new Date()).toLocaleString();
     document.getElementById('debug').innerHTML = czas;
@@ -40,8 +41,8 @@ document.addEventListener("DOMContentLoaded",function(){
 
 </head>
 <body>
-  <p><a href="/">WORK </a></p>
-   <h1>new DOM stackblitz</h1>
+  <div id="debug"></div>
+   <a href="/"><h1>new DOM on stackBlitz</h1></a>
   
   <button onClick="radio(1)">Radio 1</button>
   <button onClick="radio(2)">Radio 2</button>
@@ -54,10 +55,10 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
 
-  <h1>new DOM stackblitz</h1>
+  <h3>stackblitz.com</h3>
   <div id="html"></div>
   <div id="info"></div>
- <div id="debug"></div>
-  <app-root></app-root>
+ 
+  
 </body>
 </html>

@@ -71,6 +71,9 @@ const parsowanie=(resmain,data)=>{
       let deszcz = Math.max(day.precipitation.value,day.precipitation.min,day.precipitation.max);
       console.log(czas,"T=",day.temperature.value,"FL=",day.feelsLike.value,"  D="+deszcz+" mm");      
       html+="<p>"+czas+"T="+day.temperature.value+"FL="+day.feelsLike.value+"  D="+deszcz+" mm</p>";      
+      html+=`
+      <p>${czas} T=${day.temperature.value} F=${day.feelsLike.value}  D=${deszcz} mm</p>
+      `;      
 		}
   sendInfo(resmain,{"html":html});
 }
