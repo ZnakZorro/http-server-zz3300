@@ -37,7 +37,7 @@ const parsowanie=(body)=>{
   //return html;
 }
 
-
+/*
 async function getYRNO(miasto) {
   console.log(miasto);
   let url ='https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
@@ -64,13 +64,22 @@ async function getYRNO(miasto) {
   //console.log(posts);
   return miasto;
 }
+*/
 
+function getYRNO(miasto) {
+      let settings = { method: "Get" };
+      fetch(url, settings)
+          .then(res => res.json())
+          .then((json) => {
+            console.log(json);
+          });
+}
 
 
 app.get('/yrno/*', (req, res) => {
     let miasto = req.params[0];    
     let yr = getYRNO(miasto);
-    let ret = {"miasto":miasto,"html":yr};
+    let ret = {"miasto":miasto,"html":"???"};
     sendInfo(res,ret);
 });
 
