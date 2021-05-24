@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
 const app = express();
+const fetch = fetch();
 const exec = require('child_process');
 
 // Parsers
@@ -16,6 +17,23 @@ app.use(express.static(path.join(__dirname, 'pages')));
 /*app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'pages/index.html'));
 });*/
+
+
+
+async function getYRNO(miasto) {
+  console.log(miasto);
+  let url ='https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
+  const res = await fetch.fetchUrl(url)
+  const posts = await res.json()
+
+  console.log(posts);
+
+  return posts;
+}
+
+
+
+
 
 	let sendInfo=(res,ret)=>{
 		var json = JSON.stringify(ret);
@@ -46,6 +64,7 @@ app.get('/volume/*', (req, res) => {
 app.get('/yrno/*', (req, res) => {
     let miasto = req.params[0];
     let ret = {"miasto":miasto};
+    let yr = getYRNO(miasto);
     sendInfo(res,ret);
 });
 
