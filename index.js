@@ -69,6 +69,7 @@ const parsowanie=(resmain,data)=>{
 			//console.log(o,day);      
       let czas = (new Date(day.start)).toLocaleString('pl-PL');
       let deszcz = Math.max(day.precipitation.value,day.precipitation.min,day.precipitation.max);
+      let opis = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
       console.log(czas,"T=",day.temperature.value,"FL=",day.feelsLike.value,"  D="+deszcz+" mm");      
       //html+="<p>"+czas+"T="+day.temperature.value+"FL="+day.feelsLike.value+"  D="+deszcz+" mm</p>";      
       html+=`<tr>
@@ -79,7 +80,7 @@ const parsowanie=(resmain,data)=>{
           <td>${day.pressure.value}</td>
           <td>${day.humidity.value}</td>
           <td>${day.wind.speed}</td>
-          <td>${day.symbol.var}</td>
+          <td>${opis}</td>
           
           <td>${deszcz} mm</td>
       </tr>`;
@@ -194,7 +195,7 @@ app.get('/radio3', (req, res) => {
 
 
 //Set Port
-const port = process.env.PORT || '3300';
+const port = process.env.PORT || '3330';
 app.set('port', port);
 
 const server = http.createServer(app);
