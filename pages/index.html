@@ -35,6 +35,7 @@ let yrno=(miasto)=>{
 document.addEventListener("DOMContentLoaded",function(){
     let czas = (new Date()).toLocaleString();
     document.getElementById('debug').innerHTML = czas;
+    setTimeout(()=>{yrno("Szczecin")},1000);
 })
 
 </script>
