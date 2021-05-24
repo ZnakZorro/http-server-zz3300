@@ -6,7 +6,7 @@ const app = express();
 
 const exec = require('child_process');
 
-const fetchUrl = require("fetch").fetchUrl;
+const https = require('https');
 
 // Parsers
 app.use(bodyParser.json());
@@ -25,9 +25,24 @@ app.use(express.static(path.join(__dirname, 'pages')));
 async function getYRNO(miasto) {
   console.log(miasto);
   let url ='https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
-  fetchUrl(url, function(error, meta, body){
-    console.log(body);
-});
+    https.get(url,(res) => {
+        let body = "";
+        res.on("data", (chunk) => {
+            body += chunk;
+        });
+        res.on("end", () => {
+            try {
+                let json = JSON.parse(body);
+                console.log(json);
+                //parsowanie(json);
+            } catch (error) {
+                console.error(error.message);
+            };
+        });
+    }).on("error", (error) => {
+        console.error(error.message);
+    });
+
   //const res = await fetch.fetchUrl(url)
   //const posts = await res.json()
   //console.log(posts);
