@@ -41,22 +41,32 @@ document.addEventListener("DOMContentLoaded",function(){
 
 </head>
 <body>
-  <div id="debug"></div>
-   <a href="/"><h1>new DOM on stackBlitz</h1></a>
-  
-  <button onClick="radio(1)">Radio 1</button>
-  <button onClick="radio(2)">Radio 2</button>
-  <button onClick="radio(3)">Radio 3</button>
-  <button onClick="volume(25)">Volume 25</button>
-  <h3>Yrno</h3>
-  <button onClick='yrno("Szczecin")'>Szczecin</button>
-  <button onClick='yrno("Szczecin-Dąbie")'>Szczecin-Dąbie</button>
-  <button onClick='yrno("Warszawa")'>Warszawa</button>
+  <div class="container">
+    <div class="row">
+      <div id="debug"></div>
+      <a href="/"><h1>new DOM on stackBlitz</h1></a>
+      
+      <button onClick="radio(1)">Radio 1</button>
+      <button onClick="radio(2)">Radio 2</button>
+      <button onClick="radio(3)">Radio 3</button>
+      <button onClick="volume(25)">Volume 25</button>
+      <h3>Yrno</h3>
+      <button class="btn btn-default" onClick='yrno("Szczecin")'>Szczecin</button>
+      <button class="btn btn-default" onClick='yrno("Szczecin-Dąbie")'>Szczecin-Dąbie</button>
+      <button class="btn btn-default" onClick='yrno("Warszawa")'>Warszawa</button>
+    </div>
+  </div>
 
 
+  <div class="container">
+    <div class="row">
+      <div class="col" id="html">
+      
+      </div>
+    </div>
+  </div>
 
-  <h3>stackblitz.com</h3>
-  <div id="html"></div>
+
   <div id="info"></div>
  
   
