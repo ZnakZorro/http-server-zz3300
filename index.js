@@ -65,7 +65,7 @@ const parsowanie = (resmain, data, miasto) => {
 };
 
 let getYRNO = (resmain, miasto) => {
-  
+  console.log(miasto);
   let miastaURL={
     "Dabie":"https://www.yr.no/api/v0/locations/2-3083828/forecast",
     "Szczecin":"https://www.yr.no/api/v0/locations/5-1220500/forecast",
