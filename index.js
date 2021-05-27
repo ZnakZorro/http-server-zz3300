@@ -42,7 +42,8 @@ const parsowanie = (resmain, data, miasto) => {
     let day = data[o];
     //console.log(o,day);
     //let czas = new Date(day.start).toLocaleString('pl-PL');
-    let czas = (new Date(day.start)).toLocaleString('pl-PL', {hour: 'numeric',minute: '2-digit',weekday: 'short',year: 'numeric',month: 'short',day: 'numeric'});
+    let czas = (new Date(day.start)).toLocaleString('pl-PL', {hour: 'numeric',minute: '2-digit',weekday: 'long',year: 'numeric',month: 'short',day: 'numeric'});
+    //long  narrow  short 
     console.log(czas);
     //console.log(day.precipitation);
     let deszcz = Math.max(
@@ -119,7 +120,7 @@ app.get('/volume/*', (req, res) => {
 
 
 //Set Port
-const port = process.env.PORT || '3301';
+const port = process.env.PORT || '3304';
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port, () => console.log(`1 Running on localhost:${port}`));
