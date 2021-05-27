@@ -23,7 +23,6 @@ const sendInfo = (res, ret) => {
 };
 
 const myPad=(n)=> {
-  return n;
   let nr =n+0.001;
   let fx = nr.toFixed(1);
   let tx = ("0"+fx).slice(-4);
@@ -43,11 +42,13 @@ const parsowanie = (resmain, data, miasto) => {
     let day = data[o];
     //console.log(o,day);
     let czas = new Date(day.start).toLocaleString('pl-PL');
+    console.log(day.precipitation);
     let deszcz = Math.max(
       day.precipitation.value,
       day.precipitation.min,
       day.precipitation.max
     );
+    deszcz = deszcz || day.precipitation.value;
     let opis = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
     html += `<tr>
           <td>${czas}</td>
@@ -72,9 +73,11 @@ let getYRNO = (resmain, miasto) => {
     "Szczecin":"https://www.yr.no/api/v0/locations/5-1220500/forecast",
     "Warszawa":"https://www.yr.no/api/v0/locations/2-7531926/forecast"
     }
-  console.log(miastaURL[miasto]);
+  //console.log(miastaURL[miasto]);
 
-  let url = 'https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
+  //let url = 'https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
+  let url = miastaURL[miasto];
+  console.log(url);
   let options = { json: true };
   request(url, options, (error, res, body) => {
     if (error) {
@@ -114,7 +117,7 @@ app.get('/volume/*', (req, res) => {
 
 
 //Set Port
-const port = process.env.PORT || '3303';
+const port = process.env.PORT || '3301';
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port, () => console.log(`1 Running on localhost:${port}`));
