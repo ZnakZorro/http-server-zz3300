@@ -51,8 +51,8 @@ const parsowanie = (resmain, data, miasto) => {
     html += `<tr>
           <td>${czas}</td>
           <td>${myPad(day.temperature.value)}</td>
-          <td>${day.feelsLike.value}</td>
-          <td>${day.dewPoint.value}</td>
+          <td>${myPad(day.feelsLike.value)}</td>
+          <td>${myPad(day.dewPoint.value)}</td>
           <td>${day.pressure.value}</td>
           <td>${day.humidity.value}</td>
           <td>${day.wind.speed}</td>
