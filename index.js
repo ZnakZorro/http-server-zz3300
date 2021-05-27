@@ -41,8 +41,10 @@ const parsowanie = (resmain, data, miasto) => {
   for (var o in data) {
     let day = data[o];
     //console.log(o,day);
-    let czas = new Date(day.start).toLocaleString('pl-PL');
-    console.log(day.precipitation);
+    //let czas = new Date(day.start).toLocaleString('pl-PL');
+    let czas = (new Date(day.start)).toLocaleString('pl-PL', {hour: 'numeric',minute: '2-digit',second: '2-digit',weekday: 'long',year: 'numeric',month: 'long',day: 'numeric'});
+    console.log(czas);
+    //console.log(day.precipitation);
     let deszcz = Math.max(
       day.precipitation.value,
       day.precipitation.min,
