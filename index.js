@@ -25,7 +25,7 @@ const sendInfo = (res, ret) => {
 const myPad=(n)=> {
   let nr =n+0.001;
   let fx = nr.toFixed(1);
-  let tx = ("0"+fx).slice(-4);
+  let tx = fx;//("0"+fx).slice(-4);
   return tx;
 }
 
@@ -57,9 +57,9 @@ const parsowanie = (resmain, data, miasto) => {
           <td>${myPad(day.dewPoint.value)}</td>
           <td>${day.pressure.value}</td>
           <td>${day.humidity.value}</td>
-          <td>${day.wind.speed}</td>
+          <td>${myPad(day.wind.speed)}</td>
           <td>${opis}</td>
-          <td>${deszcz} mm</td>
+          <td>${myPad(deszcz)} mm</td>
       </tr>`;
   }
   html += '</table>';
@@ -117,7 +117,7 @@ app.get('/volume/*', (req, res) => {
 
 
 //Set Port
-const port = process.env.PORT || '3301';
+const port = process.env.PORT || '3302';
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port, () => console.log(`1 Running on localhost:${port}`));
