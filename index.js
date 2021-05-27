@@ -23,6 +23,7 @@ const sendInfo = (res, ret) => {
 };
 
 const myPad=(n)=> {
+  return n;
   let nr =n+0.001;
   let fx = nr.toFixed(1);
   let tx = ("0"+fx).slice(-4);
