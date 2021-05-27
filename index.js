@@ -50,7 +50,7 @@ const parsowanie = (resmain, data, miasto) => {
     let opis = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
     html += `<tr>
           <td>${czas}</td>
-          <td>myPad(${day.temperature.value})</td>
+          <td>${myPad(day.temperature.value)}</td>
           <td>${day.feelsLike.value}</td>
           <td>${day.dewPoint.value}</td>
           <td>${day.pressure.value}</td>
