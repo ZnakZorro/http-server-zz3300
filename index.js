@@ -22,6 +22,14 @@ const sendInfo = (res, ret) => {
   res.send(ret);
 };
 
+const myPad=(n)=> {
+  let nr =n+0.001;
+  let fx = nr.toFixed(1);
+  let tx = ("0"+fx).slice(-4);
+  return tx;
+}
+
+
 const parsowanie = (resmain, data, miasto) => {
    let czas = (new Date()).toLocaleString();
   console.log('-------------'+miasto+'-'+czas+'----------------');
@@ -42,7 +50,7 @@ const parsowanie = (resmain, data, miasto) => {
     let opis = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
     html += `<tr>
           <td>${czas}</td>
-          <td>${day.temperature.value}</td>
+          <td>myPad(${day.temperature.value})</td>
           <td>${day.feelsLike.value}</td>
           <td>${day.dewPoint.value}</td>
           <td>${day.pressure.value}</td>
@@ -97,7 +105,7 @@ app.get('/volume/*', (req, res) => {
 
 
 //Set Port
-const port = process.env.PORT || '3301';
+const port = process.env.PORT || '3300';
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port, () => console.log(`1 Running on localhost:${port}`));
