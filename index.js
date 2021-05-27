@@ -68,11 +68,11 @@ let getYRNO = (resmain, miasto) => {
   
   let miastaURL={
     "Dabie":"https://www.yr.no/api/v0/locations/2-3083828/forecast",
-    "Szczecin":"https://www.yr.no/api/v0/locations/2-3083828/forecast",
-    "Warszawa":"https://www.yr.no/api/v0/locations/2-3083828/forecast",
+    "Szczecin":"https://www.yr.no/api/v0/locations/5-1220500/forecast",
+    "Warszawa":"https://www.yr.no/api/v0/locations/2-7531926/forecast",
     }
   console.log(miastaURL[miasto]);
-  
+
   let url = 'https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
   let options = { json: true };
   request(url, options, (error, res, body) => {
