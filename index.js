@@ -69,7 +69,7 @@ let getYRNO = (resmain, miasto) => {
   let miastaURL={
     "Dabie":"https://www.yr.no/api/v0/locations/2-3083828/forecast",
     "Szczecin":"https://www.yr.no/api/v0/locations/5-1220500/forecast",
-    "Warszawa":"https://www.yr.no/api/v0/locations/2-7531926/forecast",
+    "Warszawa":"https://www.yr.no/api/v0/locations/2-7531926/forecast"
     }
   console.log(miastaURL[miasto]);
 
@@ -113,7 +113,7 @@ app.get('/volume/*', (req, res) => {
 
 
 //Set Port
-const port = process.env.PORT || '3300';
+const port = process.env.PORT || '3301';
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port, () => console.log(`1 Running on localhost:${port}`));
