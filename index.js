@@ -16,9 +16,6 @@ app.use(express.static(path.join(__dirname, 'pages')));
 const sendInfo = (res, ret) => {
   var json = JSON.stringify(ret);
   res.setHeader('Access-Control-Allow-Origin', '*');
-  //res.setHeader("Access-Control-Allow-Methods", "*");
-  //res.setHeader("Access-Control-Allow-Headers", "*");
-  //console.log(ret);
   res.send(ret);
 };
 
@@ -45,26 +42,19 @@ const parsowanie = (resmain, data, miasto) => {
   let count=0;
   for (var o in data) {
     let day = data[o];
-    //console.log(o,day);
-    //let czas = new Date(day.start).toLocaleString('pl-PL');
     let czas = (new Date(day.start)).toLocaleString('pl-PL', {hour: 'numeric',minute: '2-digit',weekday: 'long',year: 'numeric',month: 'short',day: 'numeric'});
     let time = (new Date(day.start)).getTime();
     //long  narrow  short 
-    console.log(czas);
-    //console.log(day.precipitation);
+   
     let deszcz = Math.max(
       day.precipitation.value,
       day.precipitation.min,
       day.precipitation.max
     );
     deszcz = deszcz || day.precipitation.value;
-    //let opii = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
     let opis = day.symbolCode.next1Hours || day.symbolCode.next6Hours || day.symbolCode.next12Hours || day.symbol.var;
-    console.log(opis);
     opis=opis.replaceAll("_"," ");
-    console.log(opis);
     opis=cap(opis);
-    console.log(opis);
     let trid = "row_"+count;
     html += `<tr class="rw" id="${trid}">
           <td data-time="${time}">${czas}</td>
@@ -90,9 +80,7 @@ let getYRNO = (resmain, miasto) => {
     "Szczecin":"https://www.yr.no/api/v0/locations/5-1220500/forecast",
     "Warszawa":"https://www.yr.no/api/v0/locations/2-7531926/forecast"
     }
-  //console.log(miastaURL[miasto]);
-
-  //let url = 'https://www.yr.no/api/v0/locations/2-3083828/forecast'; // Dąbie
+ 
   let url = miastaURL[miasto];
   console.log(url);
   let options = { json: true };
@@ -134,7 +122,7 @@ app.get('/volume/*', (req, res) => {
 
 
 //Set Port
-const port = process.env.PORT || '3312';
+const port = process.env.PORT || '3300';
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port, () => console.log(`1 Running on localhost:${port}`));
