@@ -58,7 +58,7 @@ const parsowanie = (resmain, data, miasto) => {
     let opis = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
     let trid = "row_"+count;
     html += `<tr class="rw" id="${trid}">
-          <td dataset-time="${time}">${czas}</td>
+          <td data-time="${time}">${czas}</td>
           <td>${myPad(day.temperature.value)}</td>
           <td>${myPad(day.feelsLike.value)}</td>
           <td>${myPad(day.dewPoint.value)}</td>
