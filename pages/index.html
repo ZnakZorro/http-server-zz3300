@@ -35,8 +35,7 @@ let yrno=(miasto)=>{
   })
 }
 
-const lookTable=()=>{
-  
+let lookTable=()=>{
   let rows = document.querySelectorAll("table.table tr.rw");
   rows.forEach((r)=>{
     //console.log(r);
@@ -46,10 +45,10 @@ const lookTable=()=>{
       tds.forEach((t,x)=>{
         console.log(x,t.textContent);
         if (x===0) console.log(t.dataset.time);
-      })
-  })
-
+      });
+  });
 }
+
 document.addEventListener("DOMContentLoaded",function(){
     let czas = (new Date()).toLocaleString();
     document.getElementById('debug').innerHTML = czas;
