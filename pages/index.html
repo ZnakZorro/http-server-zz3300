@@ -27,11 +27,26 @@ let volume=(nr)=>{
 let yrno=(miasto)=>{
   getF("/yrno/"+miasto).then((ret) => {
     console.log(ret);    
-    if (ret.html) document.getElementById("html").innerHTML =ret.html;
+    if (ret.html) {
+        document.getElementById("html").innerHTML =ret.html;
+        lookTable();
+    }
     else document.getElementById("info").textContent = JSON.stringify(ret);
   })
 }
 
+const lookTable=()=>{
+  let rows = document.querySelectorAll("table.tadle tr.row");
+  rows.forEach((r)=>{
+    console.log(r);
+    let tds = r.querySelectorAll("td");
+    console.log(tds);
+      tds.forEach((t,x)=>{
+        console.log(x,t);
+      })
+  })
+
+}
 document.addEventListener("DOMContentLoaded",function(){
     let czas = (new Date()).toLocaleString();
     document.getElementById('debug').innerHTML = czas;

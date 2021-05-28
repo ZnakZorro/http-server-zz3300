@@ -56,7 +56,7 @@ const parsowanie = (resmain, data, miasto) => {
     deszcz = deszcz || day.precipitation.value;
     let opis = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
     let trid = "row_"+count;
-    html += `<tr id="${trid}">
+    html += `<tr class="row" id="${trid}">
           <td>${czas}</td>
           <td>${myPad(day.temperature.value)}</td>
           <td>${myPad(day.feelsLike.value)}</td>
