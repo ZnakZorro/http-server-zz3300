@@ -13,9 +13,13 @@
 	},
 	"scripts": {
 		"dev":    "nodemon index.js",
-    "dev10":  "nodemon --delay 10000 index.js",
+    "dev10":  "nodemon --delay 10 index.js",
 		"start":  "node index.js",
     "build":  "node index.js",
 		"server": "npx nodemon index.js"
-	}
+	},
+"nodemonConfig": {
+    "ignore": ["pages/*", "docs/*"],
+    "delay": "15"
+  }  
 }
