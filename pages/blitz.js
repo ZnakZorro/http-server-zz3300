@@ -41,7 +41,7 @@ let lookTable=()=>{
           arr.push(t.dataset.time);
         } else arr.push(t.textContent);
       });
-       obj[id]=arr;
+       obj[rowid]=arr;
   });
   console.log(obj);
 }
