@@ -37,7 +37,7 @@ const parsowanie = (resmain, data, miasto) => {
   let html = `<h3>${miasto} ${czas}</h3>`;
   html += `<table class="table table-sm table-bordered table-striped">`;
   html +=`<tr>
-    <th>Czas</th><th>Temp</th><th>Feel</th><th>Dev</th><th>Press</th><th>Humi</th><th>Wind</th><th>Stan</th><th>Deszcz</th>
+    <th>Czas</th><th>Temp</th><th>Feel</th><th>Dev</th><th>Press</th><th>Humi</th><th>Wind</th><th>Deszcz</th><th>Stan</th>
   </tr>`;
   let count=0;
   for (var o in data) {
@@ -56,6 +56,8 @@ const parsowanie = (resmain, data, miasto) => {
     );
     deszcz = deszcz || day.precipitation.value;
     let opis = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
+    let opii = day.symbolCode.next1Hours || day.symbolCode.next6Hours || day.symbolCode.next12Hours || day.symbol.var;
+    console.log(opii);
     let trid = "row_"+count;
     html += `<tr class="rw" id="${trid}">
           <td data-time="${time}">${czas}</td>
@@ -65,8 +67,8 @@ const parsowanie = (resmain, data, miasto) => {
           <td>${day.pressure.value}</td>
           <td>${day.humidity.value}</td>
           <td>${myPad(day.wind.speed)}</td>
-          <td>${opis}</td>
           <td>${myPad(deszcz)}</td>
+          <td>${opis}</td>
       </tr>`;
       count++;
   }
