@@ -30,6 +30,9 @@ const myPad=(n)=> {
   return tx;
 }
 
+let cap=(string) =>{
+  return string[0].toUpperCase() + string.slice(1)
+}
 
 const parsowanie = (resmain, data, miasto) => {
    let czas = (new Date()).toLocaleString();
@@ -55,9 +58,13 @@ const parsowanie = (resmain, data, miasto) => {
       day.precipitation.max
     );
     deszcz = deszcz || day.precipitation.value;
-    let opis = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
-    let opii = day.symbolCode.next1Hours || day.symbolCode.next6Hours || day.symbolCode.next12Hours || day.symbol.var;
-    console.log(opii);
+    //let opii = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
+    let opis = day.symbolCode.next1Hours || day.symbolCode.next6Hours || day.symbolCode.next12Hours || day.symbol.var;
+    console.log(opis);
+    opis=opis.replaceAll("_"," ");
+    console.log(opis);
+    opis=cap(opis);
+    console.log(opis);
     let trid = "row_"+count;
     html += `<tr class="rw" id="${trid}">
           <td data-time="${time}">${czas}</td>
@@ -127,7 +134,7 @@ app.get('/volume/*', (req, res) => {
 
 
 //Set Port
-const port = process.env.PORT || '3300';
+const port = process.env.PORT || '33011';
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port, () => console.log(`1 Running on localhost:${port}`));
