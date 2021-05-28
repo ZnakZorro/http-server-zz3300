@@ -56,7 +56,7 @@ const parsowanie = (resmain, data, miasto) => {
     deszcz = deszcz || day.precipitation.value;
     let opis = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
     let trid = "row_"+count;
-    html += `<tr class="row" id="${trid}">
+    html += `<tr class="rw" id="${trid}">
           <td>${czas}</td>
           <td>${myPad(day.temperature.value)}</td>
           <td>${myPad(day.feelsLike.value)}</td>
@@ -124,7 +124,7 @@ app.get('/volume/*', (req, res) => {
 
 
 //Set Port
-const port = process.env.PORT || '3305';
+const port = process.env.PORT || '3307';
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port, () => console.log(`1 Running on localhost:${port}`));
