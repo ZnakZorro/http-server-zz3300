@@ -23,8 +23,8 @@ const myPad=(n)=> {
   let nr =n+0.001;
   let fx = nr.toFixed(1);
   return fx;
-  let tx = ("0"+fx).slice(-4);
-  return tx;
+  //let tx = ("0"+fx).slice(-4);
+  //return tx;
 }
 
 let cap=(string) =>{
@@ -122,7 +122,7 @@ app.get('/volume/*', (req, res) => {
 
 
 //Set Port
-const port = process.env.PORT || '3303';
+const port = process.env.PORT || '3304';
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port, () => console.log(`1 Running on localhost:${port}`));

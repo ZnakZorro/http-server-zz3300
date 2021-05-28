@@ -7,19 +7,22 @@
 		"core-js": "2.5.3",
 		"express": "4.16.2",
 		"https": "latest",
+		"next": "10.0.7",
 		"nodemon": "^2.0.7",
-		"request": "latest",
-    "next": "10.0.7"
+		"request": "latest"
 	},
 	"scripts": {
-		"dev":    "nodemon index.js",
-    "dev10":  "nodemon --delay 10 index.js",
-		"start":  "node index.js",
-    "build":  "node index.js",
+		"dev": "nodemon index.js",
+		"dev10": "nodemon --delay 10 index.js",
+		"start": "node index.js",
+		"build": "node index.js",
 		"server": "npx nodemon index.js"
 	},
-"nodemonConfig": {
-    "ignore": ["pages/*", "docs/*"],
-    "delay": "15"
-  }  
+	"nodemonConfig": {
+		"ignore": [
+			"pages/*",
+			"docs/*"
+		],
+		"delay": "15"
+	}
 }

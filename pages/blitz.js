@@ -36,10 +36,9 @@ let lookTable=()=>{
     let arr = [];
       tds.forEach((t,x)=>{
         //console.log(x,t.textContent);
-        if (x===0) {
-          //console.log(t.dataset.time);
-          arr.push(parseInt(t.dataset.time));
-        } else arr.push(parseInt(t.textContent));
+        if (x===0)      arr.push(parseInt(t.dataset.time));
+        else if (x===8) arr.push(t.textContent);
+        else            arr.push(parseInt(t.textContent));
       });
        obj[rowid]=arr;
   });
