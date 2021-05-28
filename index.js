@@ -66,7 +66,7 @@ const parsowanie = (resmain, data, miasto) => {
           <td>${day.humidity.value}</td>
           <td>${myPad(day.wind.speed)}</td>
           <td>${opis}</td>
-          <td>${myPad(deszcz)} mm</td>
+          <td>${myPad(deszcz)}</td>
       </tr>`;
       count++;
   }
