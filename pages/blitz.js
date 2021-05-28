@@ -35,9 +35,9 @@ let lookTable=()=>{
     //console.log(tds);
     let arr = [];
       tds.forEach((t,x)=>{
-        console.log(x,t.textContent);
+        //console.log(x,t.textContent);
         if (x===0) {
-          console.log(t.dataset.time);
+          //console.log(t.dataset.time);
           arr.push(t.dataset.time);
         } else arr.push(t.textContent);
       });
