@@ -36,13 +36,14 @@ let yrno=(miasto)=>{
 }
 
 const lookTable=()=>{
-  let rows = document.querySelectorAll("table.tadle tr.rw");
+  let rows = document.querySelectorAll("table.table tr.rw");
   rows.forEach((r)=>{
     console.log(r);
     let tds = r.querySelectorAll("td");
     console.log(tds);
       tds.forEach((t,x)=>{
-        console.log(x,t);
+        console.log(x,t.textContent);
+        if (x===0) console.log(t.dataset.time);
       })
   })
 

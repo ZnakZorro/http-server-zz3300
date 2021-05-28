@@ -45,6 +45,7 @@ const parsowanie = (resmain, data, miasto) => {
     //console.log(o,day);
     //let czas = new Date(day.start).toLocaleString('pl-PL');
     let czas = (new Date(day.start)).toLocaleString('pl-PL', {hour: 'numeric',minute: '2-digit',weekday: 'long',year: 'numeric',month: 'short',day: 'numeric'});
+    let time = (new Date(day.start)).getTime();
     //long  narrow  short 
     console.log(czas);
     //console.log(day.precipitation);
@@ -57,7 +58,7 @@ const parsowanie = (resmain, data, miasto) => {
     let opis = day.symbol.var ? day.symbol.var : day.symbolCode.next6Hours;
     let trid = "row_"+count;
     html += `<tr class="rw" id="${trid}">
-          <td>${czas}</td>
+          <td dataset-time="${time}">${czas}</td>
           <td>${myPad(day.temperature.value)}</td>
           <td>${myPad(day.feelsLike.value)}</td>
           <td>${myPad(day.dewPoint.value)}</td>
