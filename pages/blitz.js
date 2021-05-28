@@ -39,7 +39,7 @@ let lookTable=()=>{
         if (x===0) {
           //console.log(t.dataset.time);
           arr.push(parseInt(t.dataset.time));
-        } else arr.push(t.textContent);
+        } else arr.push(parseInt(t.textContent));
       });
        obj[rowid]=arr;
   });
