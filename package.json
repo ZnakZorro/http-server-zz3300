@@ -8,11 +8,14 @@
 		"express": "4.16.2",
 		"https": "latest",
 		"nodemon": "^2.0.7",
-		"request": "latest"
+		"request": "latest",
+    "next": "10.0.7"
 	},
 	"scripts": {
-		"dev": "nodemon index.js",
-		"start": "node index.js",
+		"dev":    "nodemon index.js",
+    "dev10":  "nodemon --delay 10000 index.js",
+		"start":  "node index.js",
+    "build":  "node index.js",
 		"server": "npx nodemon index.js"
 	}
 }

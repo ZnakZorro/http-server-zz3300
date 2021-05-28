@@ -15,7 +15,7 @@ let volume=(nr)=>{
 }
 let yrno=(miasto)=>{
   getF("/yrno/"+miasto).then((ret) => {
-    console.log(ret);    
+    //console.log(ret);    
     if (ret.html) {
         document.getElementById("html").innerHTML =ret.html;
         lookTable();
@@ -38,7 +38,7 @@ let lookTable=()=>{
         //console.log(x,t.textContent);
         if (x===0) {
           //console.log(t.dataset.time);
-          arr.push(t.dataset.time);
+          arr.push(parseInt(t.dataset.time));
         } else arr.push(t.textContent);
       });
        obj[rowid]=arr;
