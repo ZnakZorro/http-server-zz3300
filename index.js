@@ -32,9 +32,16 @@ let cap=(string) =>{
 }
 
 const parsowanie = (resmain, data, miasto) => {
+  let grafyURL={
+    "Dabie":"https://www.yr.no/place/Poland/West_Pomerania/Szczecin_D%C4%85bie/avansert_meteogram.png",
+    "Szczecin":"https://www.yr.no/place/Poland/West_Pomerania/Szczecin/avansert_meteogram.png",
+    "Warszawa":"https://www.yr.no/place/Poland/West_Pomerania/Szczecin_D%C4%85bie/avansert_meteogram.png"
+    }
+    let htmlGraf = '<img src="'+grafyURL[miasto]+'"></img>';
    let czas = (new Date()).toLocaleString();
   console.log('-------------'+miasto+'-'+czas+'----------------');
   let html = `<h3>${miasto} ${czas}</h3>`;
+  html += htmlGraf;
   html += `<table class="table table-sm table-bordered table-striped">`;
   html +=`<tr>
     <th>Czas</th><th>Temp</th><th>Feel</th><th>Dev</th><th>Press</th><th>Humi</th><th>Wind</th><th>Deszcz</th><th>Stan</th>
@@ -80,7 +87,7 @@ let getYRNO = (resmain, miasto) => {
     "Szczecin":"https://www.yr.no/api/v0/locations/5-1220500/forecast",
     "Warszawa":"https://www.yr.no/api/v0/locations/2-7531926/forecast"
     }
- 
+  
   let url = miastaURL[miasto];
   console.log(url);
   let options = { json: true };
@@ -122,7 +129,7 @@ app.get('/volume/*', (req, res) => {
 
 
 //Set Port
-const port = process.env.PORT || '3305';
+const port = process.env.PORT || '3301';
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port, () => console.log(`1 Running on localhost:${port}`));
